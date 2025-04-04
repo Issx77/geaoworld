@@ -17,14 +17,12 @@
 <?php
 require_once 'header.php';
 require_once 'inc/manager-db.php';
-if (isset($_GET['name']) && !empty($_GET['name']) ){
-$continent = ($_GET['name']);
-$desPays = getCountriesByContinent($continent);
+if (isset($_GET['id']) && !empty($_GET['id']) ){
+$id = ($_GET['id']);
+$pays = getPays($id);
+
 }
-else{
-$continent = "monde";
-$desPays = getAllCountries();
-}
+
 ?>
 
 <main role="main" class="flex-shrink-0">
@@ -34,7 +32,8 @@ $desPays = getAllCountries();
     <div>
      <table class="table">
          <tr>
-         <?php echo"<h1>$continent</h1>"?>
+         <?php echo"<h1>$pays->Name </h1>"?>
+         <th>drapeau</th>
            <th>Nom</th>
            <th>Population</th>
            <th>Surface</th>
@@ -46,11 +45,13 @@ $desPays = getAllCountries();
        // des caractéristiques d'un pays (en relation avec les colonnes de la table Country)
        ?>
           <tr>
-            <td> <?php echo $continent  ?></td>
+          <td> <?php $source= "images/flag/" .strtolower($pays->Code2).".png"?>
+          <img src=<?= $source; ?> height="45" width="60" ></td>
+            <td> <?php echo $pays->Name  ?></td>
             <td> <?php echo $pays->Population ?></td>
             <td> <?php echo $pays->SurfaceArea?></td>
             <td> <?php echo $pays->HeadOfState?></td>
-            <td> <?php echo getCapital($continent->Name)?></td>
+            <td> <?php echo getCapital($pays->Capital)->Name ?></td>
           </tr>
           <?php  ?>
      </table>

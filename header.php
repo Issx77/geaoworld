@@ -44,7 +44,7 @@ overflow-y: auto;
 <body class="d-flex flex-column h-100">
 <header>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="index.php">GeoWorld</a>
+    <a class="navbar-brand" href="index2.php">GeoWorld</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -53,7 +53,7 @@ overflow-y: auto;
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="langue.php">langue <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
@@ -83,8 +83,9 @@ overflow-y: auto;
   aria-expanded="false">pays</a>
   <div class="dropdown-menu" aria-labelledby="dropdown01">
     <?php foreach($lesPays as $lePays) : ?>
-    <a class="dropdown-item" href="pays.php?name=<?= $lePays->Name ; ?>"><?= $lePays->Name; ?> </a>
+    <a class="dropdown-item" href="pays.php?id=<?= $lePays->id ; ?>"><?= $lePays->Name; ?> </a>
 <?php endforeach ; ?>
+
 </div>
 </li>
 </div></ul>

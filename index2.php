@@ -33,9 +33,11 @@ $desPays = getAllCountries();
   <div class="container">
     
     <div>
-     <table class="table">
+  
          <tr>
          <?php echo "<h1>Les pays ".$continent."</h1>"?>
+         <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead>
          <th>drapeau</th>
            <th>Nom</th>
            <th>Population</th>
@@ -43,20 +45,22 @@ $desPays = getAllCountries();
            <th>Chef etat</th>
            <th>Capitale</th>
          </tr>
+</thead>
+<tbody>
        <?php
        // $desPays est un tableau dont les éléments sont des objets représentant
        // des caractéristiques d'un pays (en relation avec les colonnes de la table Country)
        foreach ($desPays as $pays) { ?>
           <tr>
           <td> <?php $source= "images/flag/" .strtolower($pays->Code2).".png"?>
-        <img src=<?= $source ?>></td>
+        <img src=<?= $source; ?> height="45" width="60" ></td>
 
           <td><a href="pays.php?id=<?php echo $pays->id; ?>"><?php echo $pays->Name; ?></a></td>
         
             <td> <?php echo $pays->Population ?></td>
             <td> <?php echo $pays->SurfaceArea?></td>
             <td> <?php echo $pays->HeadOfState?></td>
-            <td> <td> <?php $capitale = getCapital($pays->Capital);
+            <td> <?php $capitale = getCapital($pays->Capital);
             if ($capitale) {
                 echo $capitale->Name;
             } else {
@@ -65,6 +69,7 @@ $desPays = getAllCountries();
             
           </tr>
           <?php } ?>
+          </tbody>
      </table>
     </div>
   </div>
